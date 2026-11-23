@@ -1,0 +1,15 @@
+#!/bin/sh
+# NAVI-KIND: TOOL
+# NAVI-PURPOSE: Hyprland (Wayland) system menu; the dwm sysact script is X-only.
+# Actions: lock (hyprlock), logout Hyprland, reload config, display off, sleep, reboot, shutdown.
+choice=$(printf '🔒 lock\n🚪 logout hyprland\n♻️ reload config\n💤 sleep\n📺 display off\n🔃 reboot\n🖥️ shutdown\n' | fuzzel --dmenu -p 'Action: ')
+case "$choice" in
+	'🔒 lock') hyprlock ;;
+	'🚪 logout hyprland') hyprctl dispatch 'hl.dsp.exit()' ;;
+	'♻️ reload config') hyprctl reload ;;
+	'💤 sleep') systemctl suspend ;;
+	'📺 display off') hyprctl dispatch 'hl.dsp.dpms({ action = "disable" })' ;;
+	'🔃 reboot') systemctl reboot ;;
+	'🖥️ shutdown') systemctl poweroff ;;
+	*) exit 1 ;;
+esac
