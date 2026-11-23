@@ -1,0 +1,48 @@
+/* doom-one (doom-themes doom-one-theme.el) */
+* {
+  font-family: monospace;
+  font-size: 12px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+window#waybar {
+  background: #282c34;
+  color: #bbc2cf;
+  border-bottom: 2px solid #3f444a;
+}
+#workspaces button {
+  padding: 0 8px;
+  color: #5B6268;
+  background: transparent;
+}
+/* occupied = has at least one window: cool colour (doom-one cyan) */
+#workspaces button.occupied {
+  color: #46d9ff;
+}
+#workspaces button.active {
+  color: #51afef;
+  background: #3f444a;
+}
+/* urgent = app asked for attention / notification: warm colour, wins over occupied and active */
+#workspaces button.urgent {
+  color: #ff6c6b;
+}
+#workspaces button:hover {
+  background: #21242b;
+  color: #bbc2cf;
+}
+#window {
+  color: #bbc2cf;
+}
+#pulseaudio,
+#clock {
+  padding: 0 10px;
+  color: #bbc2cf;
+}
+#clock {
+  color: #51afef;
+}
+#pulseaudio.muted {
+  color: #5B6268;
+}
