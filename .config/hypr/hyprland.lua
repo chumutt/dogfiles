@@ -152,6 +152,12 @@ hl.bind(M .. " + V", hl.dsp.window.float({ action = "toggle" }))   -- dwm STACKK
 hl.bind(M .. " + space", hl.dsp.layout("swapwithmaster auto"))     -- dwm zoom
 hl.bind(M .. " + SHIFT + V", hl.dsp.layout("swapwithmaster auto"))
 
+-- Gaps (dwm bindings). SUPER+A = togglegaps: default gaps <-> no gaps.
+-- SUPER+SHIFT+A = defaultgaps: reset to the configured gap defaults.
+-- hyprctl keyword is unsupported in this Lua-config Hyprland, so these use eval.
+hl.bind(M .. " + A", sh([[/home/chu/.local/bin/hypr-gaps-toggle.sh]]))
+hl.bind(M .. " + SHIFT + A", sh([[sh -c 'hyprctl eval "hl.config({ general = { gaps_in = {top=2,right=4,bottom=2,left=4}, gaps_out = {top=4,right=4,bottom=4,left=4} } })"']]))
+
 -- Focus / stack (dwm j/k focusstack, Shift+j/k pushstack)
 hl.bind(M .. " + J", hl.dsp.layout("cyclenext"))
 hl.bind(M .. " + K", hl.dsp.layout("cycleprev"))
