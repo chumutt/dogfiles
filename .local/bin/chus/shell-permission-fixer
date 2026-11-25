@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+for i in *; do [ "${i/%.sh/}" != "$i" ] && echo '".sh" file extension postfixes on applicable filenames found, fixing...' && mv "$i" "${i/%.sh/}" && echo 'Postfix fix successful, continuing...'; done
+
+echo "Setting user executable permissions on applicable files..."
+chmod u+x ~/.local/bin/*/*
+echo "Setting group executable permissions on applicable files..."
+chmod g+x ~/.local/bin/*/*
+echo "Setting executable permissions on applicable files for other users..."
+chmod o+x ~/.local/bin/*/*
+echo "Setting group ownership on applicable files..."
+chgrp -R wheel ~/.local/bin/*/*
+echo "Job complete, enjoy!"
+exec $SHELL

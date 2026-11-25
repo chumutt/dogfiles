@@ -1,0 +1,30 @@
+directory: ~/Music            # The default library root directory.
+library: ~/Music/library.db   # The default library database file to use.
+# plugins: fromfilename beatport chroma convert acousticbrainz badfiles mpdupdate mpdstats permissions fuzzy bpm bpsync fetchart discogs bareasc albumtypes lyrics lastgenre web zero badfiles unimported duplicates
+plugins: bandcamp
+
+bandcamp:
+  include_digital_only_tracks: true
+  search_max: 2
+  art: yes
+  comments_separator: "\n---\n"
+  exclude_extra_fields: []
+  genre:
+    capitalize: no
+    maximum: 0
+    always_include: []
+    mode: progressive # classical, progressive or psychedelic (NOT a default genre, but a mode)
+
+
+# discogs:
+#   source_weight: 0.5
+
+replace:
+    '[\\/]': \-
+    '^\.': \-
+    '[\x00-\x1f]': \-
+    '[<>:"\?\*\|]': \-
+    '\.$': \-
+    '\s+$': ''
+    '^\s+': ''
+    '^-': \-

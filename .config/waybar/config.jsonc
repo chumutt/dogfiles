@@ -1,0 +1,111 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 26,
+  "spacing": 8,
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/updates"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "mpris",
+    "cpu",
+    "memory",
+    "temperature",
+    "pulseaudio",
+    "network",
+    "bluetooth",
+    "tray",
+    "custom/notifications",
+    "custom/weather",
+    "clock",
+    "custom/settings"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "α", "2": "β", "3": "γ", "4": "δ", "5": "ε", "6": "ζ", "7": "η", "8": "θ", "9": "ι",
+      "10": "α", "11": "β", "12": "γ", "13": "δ", "14": "ε", "15": "ζ", "16": "η", "17": "θ", "18": "ι",
+      "19": "α", "20": "β", "21": "γ", "22": "δ", "23": "ε", "24": "ζ", "25": "η", "26": "θ", "27": "ι",
+      "28": "α", "29": "β", "30": "γ", "31": "δ", "32": "ε", "33": "ζ", "34": "η", "35": "θ", "36": "ι"
+    }
+  },
+  "hyprland/window": {
+    "max-length": 80,
+    "separate-outputs": true
+  },
+  "custom/updates": {
+    "exec": "n=$(checkupdates 2>/dev/null | wc -l); if [ \"$n\" -gt 0 ]; then echo \"upd $n\"; else echo \"upd 0\"; fi",
+    "interval": 3600,
+    "tooltip": false,
+    "on-click": "foot -e sh -c 'sudo pacman -Syu; read -p done'"
+  },
+  "mpris": {
+    "format": "{player_icon} {title}",
+    "format-paused": "{status_icon} <i>{title}</i>",
+    "max-length": 40,
+    "player-icons": { "default": "♪" },
+    "status-icons": { "paused": "⏸" }
+  },
+  "cpu": {
+    "format": "cpu {usage}%",
+    "interval": 5
+  },
+  "memory": {
+    "format": "mem {percentage}%",
+    "interval": 5
+  },
+  "temperature": {
+    "critical-threshold": 85,
+    "format": "{temperatureC}°C",
+    "format-critical": "hot {temperatureC}°C",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "muted",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "network": {
+    "format-wifi": "wifi {signalStrength}%",
+    "format-ethernet": "eth",
+    "format-disconnected": "offline",
+    "tooltip-format": "{ifname} {ipaddr}",
+    "on-click": "foot -e nmtui"
+  },
+  "bluetooth": {
+    "format": "bt",
+    "format-disabled": "bt off",
+    "format-off": "bt off",
+    "format-connected": "bt {num_connected}",
+    "on-click": "foot -e bluetoothctl"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+  "custom/notifications": {
+    "exec": "if pidof -q mako; then n=$(makoctl list -j | jq 'length'); echo \"ntf $n\"; else echo \"ntf off\"; fi",
+    "interval": 10,
+    "on-click": "makoctl restore",
+    "on-click-right": "makoctl dismiss -a"
+  },
+  "custom/weather": {
+    "exec": "curl -sf --max-time 5 'wttr.in/?format=%C+%t' || echo 'wx ?'",
+    "interval": 1800,
+    "tooltip": false
+  },
+  "clock": {
+    "format": "{:%a %b %d  %I:%M %p / %H:%M}",
+    "tooltip": false
+  },
+  "custom/settings": {
+    "format": "⚙",
+    "tooltip": false,
+    "on-click": "hyprsysact"
+  }
+}
