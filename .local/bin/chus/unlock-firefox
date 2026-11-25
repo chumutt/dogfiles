@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+cd ~/.mozilla
+find . -name lock -exec rm -i '{}' \;
+find . -name .parentlock -exec rm -i '{}' \;

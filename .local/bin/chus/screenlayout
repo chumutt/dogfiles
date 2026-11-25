@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Customize or replace this file using arandr for your own persistent monitor setup.
+# Gets autoloaded when X11 is loaded (~/.xprofile).
+
+# sleep 1 &&
+
+# xrandr --output DisplayPort-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
+#     --output DisplayPort-1 --mode 1920x1080 --pos 1920x0 --rotate left \
+#     --output HDMI-A-0 --mode 1920x1080 --pos 3000x0 --rotate normal \
+#     --output HDMI-A-1 --off

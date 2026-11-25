@@ -1,0 +1,92 @@
+{
+  "cookiecutter": {
+    "project_name": "namegen-cpp",
+    "remote_url": "git@github.com:chumutt/namegen-cpp.git",
+    "project_slug": "namegen-cpp",
+    "full_name": "chumutt",
+    "license": "GPL-3.0",
+    "use_submodules": "No",
+    "header_only": "Yes",
+    "external_dependency": "None",
+    "github_actions_ci": "Yes",
+    "gitlab_ci": "Yes",
+    "readthedocs": "Yes",
+    "doxygen": "Yes",
+    "cxx_minimum_standard": "11",
+    "python_bindings": "No",
+    "pypi_release": "No",
+    "codecovio": "Yes",
+    "sonarcloud": "Yes",
+    "_extensions": [
+      "local_extensions.PrecommitExtension",
+      "local_extensions.ShortcutExtension",
+      "local_extensions.CurrentDateExtension"
+    ],
+    "__python_module": "namegencpp",
+    "_catch_version": "2.13.10",
+    "_cibuildwheel_version": "2.13.1",
+    "_pybind_version": "2.10.4",
+    "_sonarscanner_version": "4.7.0.2747",
+    "_template": "gh:ssciwr/cookiecutter-cpp-project",
+    "_output_dir": "/home/chu/name-generator-cpp",
+    "_repo_dir": "/home/chu/.config/cookiecutter/cookiecutters/cookiecutter-cpp-project",
+    "_checkout": null
+  },
+  "_cookiecutter": {
+    "project_name": "My C++ Project",
+    "remote_url": "None",
+    "project_slug": "{%- if cookiecutter.remote_url == 'None' -%}{{ cookiecutter.project_name|replace('+', 'p')|slugify }}{% else %}{{ cookiecutter.remote_url.split('/')[-1]|replace('.git', '')}}{%- endif -%}",
+    "full_name": "Chu the Pup",
+    "license": [
+      "MIT",
+      "BSD-2",
+      "GPL-3.0",
+      "LGPL-3.0",
+      "None"
+    ],
+    "use_submodules": [
+      "Yes",
+      "No"
+    ],
+    "header_only": [
+      "Yes",
+      "No"
+    ],
+    "external_dependency": "None",
+    "github_actions_ci": [
+      "Yes",
+      "No"
+    ],
+    "gitlab_ci": [
+      "Yes",
+      "No"
+    ],
+    "readthedocs": [
+      "Yes",
+      "No"
+    ],
+    "doxygen": [
+      "Yes",
+      "No"
+    ],
+    "cxx_minimum_standard": [
+      "11",
+      "14",
+      "17",
+      "20"
+    ],
+    "python_bindings": [
+      "No",
+      "Yes"
+    ],
+    "pypi_release": "{{ cookiecutter.python_bindings }}",
+    "codecovio": [
+      "Yes",
+      "No"
+    ],
+    "sonarcloud": [
+      "No",
+      "Yes"
+    ]
+  }
+}

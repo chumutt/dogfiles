@@ -1,0 +1,30 @@
+{
+  "cookiecutter": {
+    "project_name": "sandbox",
+    "repo_name": "sandbox",
+    "description": "",
+    "version": "0.0.1",
+    "year": "2024",
+    "author": "chu the pup",
+    "email": "chufilthymutt@gmail.com",
+    "site": "https://dogboner.xyz",
+    "username": "chu",
+    "licence": "GNU GPL-3.0",
+    "_template": "cl-cookieproject",
+    "_output_dir": "/home/chu/.local/share/roswell/local-projects/chus",
+    "_repo_dir": "/home/chu/.config/cookiecutter/cookiecutters/cl-cookieproject",
+    "_checkout": null
+  },
+  "_cookiecutter": {
+    "project_name": "cookie-lisp-project",
+    "repo_name": "{{ cookiecutter.project_name }}",
+    "description": "",
+    "version": "0.0.1",
+    "year": 2024,
+    "author": "chu the pup",
+    "email": "chufilthymutt@gmail.com",
+    "site": "https://dogboner.xyz",
+    "username": "chu",
+    "licence": "GNU GPL-3.0"
+  }
+}
