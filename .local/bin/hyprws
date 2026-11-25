@@ -1,0 +1,13 @@
+#!/bin/sh
+# NAVI-KIND: TOOL
+# Per-screen workspaces: workspace N on the focused monitor is named "<monitor>-N",
+# so each screen owns its own 1-9 and never pulls another screen's workspace.
+# Usage: hyprws N [move]
+n="$1"
+mon=$(hyprctl monitors -j | python3 -c 'import json,sys; print([m["name"] for m in json.load(sys.stdin) if m["focused"]][0])')
+ws="name:${mon}-${n}"
+if [ "$2" = "move" ]; then
+    hyprctl dispatch "hl.dsp.window.move({ workspace = \"${ws}\" })"
+else
+    hyprctl dispatch "hl.dsp.focus({ workspace = \"${ws}\" })"
+fi

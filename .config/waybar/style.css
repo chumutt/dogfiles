@@ -16,10 +16,15 @@ window#waybar {
   color: #5B6268;
   background: transparent;
 }
+/* occupied = has at least one window: cool colour (doom-one cyan) */
+#workspaces button.occupied {
+  color: #46d9ff;
+}
 #workspaces button.active {
   color: #51afef;
   background: #3f444a;
 }
+/* urgent = app asked for attention / notification: warm colour, wins over occupied and active */
 #workspaces button.urgent {
   color: #ff6c6b;
 }

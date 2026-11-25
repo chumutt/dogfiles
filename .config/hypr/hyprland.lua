@@ -1,4 +1,4 @@
--- Hyprland config (Lua), ported from a dwm/LARBS keymap.
+-- Hyprland config for chunix, ported from the dwm/LARBS keymap (~/.local/src/dwm/config.h).
 -- Workspaces 1-9 stand in for dwm tags. Verify: hyprctl configerrors
 
 local M = "SUPER"
@@ -23,10 +23,13 @@ smw.setup({
 -- Ported from ~/.screenlayout/default.sh. Hyprland (Wayland) output names differ from xrandr:
 --   HDMI-0 -> HDMI-A-1 (AOC 24B2W1), DP-2 -> DP-2 (AOC G2460), DP-4 -> DP-3 (Sceptre O34 3440x1440),
 --   HDMI-1 -> HDMI-A-2 (HAT Kamvas 13, drawing tablet display)
-hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0",     scale = 1 })
-hl.monitor({ output = "DP-2",     mode = "preferred", position = "1920x0",  scale = 1 })
-hl.monitor({ output = "DP-3",     mode = "preferred", position = "0x1080",  scale = 1 })
-hl.monitor({ output = "HDMI-A-2", mode = "preferred", position = "683x2520", scale = 1 })
+-- Managed by nwg-displays (writes ~/.config/hypr/monitors.lua). Fallback if missing.
+local ok = pcall(dofile, os.getenv("HOME") .. "/.config/hypr/monitors.lua")
+if not ok then
+    hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0", scale = 1 })
+    hl.monitor({ output = "DP-2",     mode = "preferred", position = "1920x0", scale = 1 })
+    hl.monitor({ output = "DP-1",     mode = "preferred", position = "0x1080", scale = 1 })
+end
 
 -----------------------
 ---- WORKSPACES ----
@@ -37,6 +40,7 @@ hl.monitor({ output = "HDMI-A-2", mode = "preferred", position = "683x2520", sca
 -------------------
 hl.on("hyprland.start", function()
     sh("sh -c 'pidof -s mpd || mpd'")
+    sh("sh -c 'pidof -s keepassxc || keepassxc'")
     -- dwm scratchpads (spterm / spcalc), started hidden on their special workspaces
     term("-a spterm -W 120x34")
     term("-a spcalc -f monospace:size=16 -W 50x20 -e bc -lq")
@@ -50,6 +54,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("QT_QUICK_CONTROLS_STYLE", "org.kde.desktop")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -140,12 +145,18 @@ hl.bind(M .. " + C", term("-e profanity"))
 hl.bind(M .. " + N", term("-e nvim -c VimwikiIndex"))
 hl.bind(M .. " + SHIFT + N", term("-e newsboat"))
 hl.bind(M .. " + M", term("-e ncmpcpp"))
-hl.bind(M .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(M .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(M .. " + SHIFT + space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(M .. " + S", hl.dsp.window.pin({ action = "toggle" }))
 hl.bind(M .. " + V", hl.dsp.window.float({ action = "toggle" }))   -- dwm STACKKEYS V area; float toggle is the closest
 hl.bind(M .. " + space", hl.dsp.layout("swapwithmaster auto"))     -- dwm zoom
 hl.bind(M .. " + SHIFT + V", hl.dsp.layout("swapwithmaster auto"))
+
+-- Gaps (dwm bindings). SUPER+A = togglegaps: default gaps <-> no gaps.
+-- SUPER+SHIFT+A = defaultgaps: reset to the configured gap defaults.
+-- hyprctl keyword is unsupported in this Lua-config Hyprland, so these use eval.
+hl.bind(M .. " + A", sh([[/home/chu/.local/bin/hypr-gaps-toggle.sh]]))
+hl.bind(M .. " + SHIFT + A", sh([[sh -c 'hyprctl eval "hl.config({ general = { gaps_in = {top=2,right=4,bottom=2,left=4}, gaps_out = {top=4,right=4,bottom=4,left=4} } })"']]))
 
 -- Focus / stack (dwm j/k focusstack, Shift+j/k pushstack)
 hl.bind(M .. " + J", hl.dsp.layout("cyclenext"))

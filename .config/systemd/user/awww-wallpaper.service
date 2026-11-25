@@ -1,0 +1,14 @@
+[Unit]
+Description=Set awww wallpaper
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=no
+Environment=WAYLAND_DISPLAY=wayland-1
+ExecStartPre=/usr/bin/sleep 1
+ExecStart=/bin/sh -c 'img=%h/.local/share/bg; [ -f "$img" ] || img=%h/Pictures/wallpaper.jpg; for i in 1 2 3 4 5 6 7 8 9 10; do /usr/bin/awww img "$img" --resize crop --transition-type none && exit 0; sleep 1; done; exit 1'
+
+[Install]
+WantedBy=graphical-session.target

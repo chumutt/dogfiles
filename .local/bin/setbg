@@ -36,6 +36,12 @@ else
 	[ -f "$zathuraconf.bak" ] && unlink "$zathuraconf" && mv "$zathuraconf.bak" "$zathuraconf"
 fi
 
-xwallpaper --zoom "$bgloc"
-# If running, dwm hit the key to refresh the color scheme.
-pidof dwm >/dev/null && xdotool key super+F5
+# Under Wayland (Hyprland), set the wallpaper with the awww daemon
+# (its default resize=crop matches xwallpaper --zoom). Otherwise assume X11/dwm.
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	awww img "$bgloc"
+else
+	xwallpaper --zoom "$bgloc"
+	# If running, dwm hit the key to refresh the color scheme.
+	pidof dwm >/dev/null && xdotool key super+F5
+fi
