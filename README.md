@@ -1,7 +1,17 @@
-# The Voidrice (Luke Smith <https://lukesmith.xyz>'s dotfiles)
+# dogfiles
 
-These are the dotfiles deployed by [LARBS](https://larbs.xyz) and as seen on
-[my YouTube channel](https://youtube.com/c/lukesmithxyz).
+lain's personal dotfiles for Arch Linux, derived from Luke Smith's
+[voidrice](https://github.com/LukeSmithxyz/voidrice). Installed by my LARBS
+fork, [CUMFLARBS](https://github.com/chumutt/CUMFLARBS).
+
+One install, two sessions:
+
+- **dwm on X11**: the classic voidrice setup, started with `startx`.
+- **Hyprland on Wayland**: started on tty1 by the `navi.session=hyprland`
+  kernel-cmdline boot entry (see `.config/shell/zprofile-hyprland.zsh`).
+
+Pick a session by choosing the matching boot entry at power-on. Both stacks
+are merged into this repo's `main` branch.
 
 - Very useful scripts are in `~/.local/bin/`
 - Settings for:
@@ -11,6 +21,8 @@ These are the dotfiles deployed by [LARBS](https://larbs.xyz) and as seen on
 	- mpd/ncmpcpp (music)
 	- nsxiv (image/gif viewer)
 	- mpv (video player)
+	- dwm/dwmblocks/st (X11 session)
+	- Hyprland, waybar, fuzzel, foot, mako (Wayland session)
 	- other stuff like xdg default programs, inputrc and more, etc.
 - I try to minimize what's directly in `~` so:
 	- All configs that can be in `~/.config/` are.
@@ -21,7 +33,7 @@ These are the dotfiles deployed by [LARBS](https://larbs.xyz) and as seen on
 
 ## Usage
 
-These dotfiles are intended to go with numerous suckless programs I use:
+The X11 side is intended to go with the suckless programs I use:
 
 - [dwm](https://github.com/lukesmithxyz/dwm) (window manager)
 - [dwmblocks](https://github.com/lukesmithxyz/dwmblocks) (statusbar)
@@ -35,15 +47,20 @@ as well.
 
 ## Install these dotfiles and all dependencies
 
-Use [LARBS](https://larbs.xyz) to autoinstall everything:
+Use [CUMFLARBS](https://github.com/chumutt/CUMFLARBS), my fork of LARBS, to
+autoinstall everything:
 
 ```
-curl -LO larbs.xyz/larbs.sh
+curl -LO https://raw.githubusercontent.com/chumutt/CUMFLARBS/main/static/larbs.sh
+sh larbs.sh
 ```
 
 or clone the repo files directly to your home directory and install the
-[dependencies](https://github.com/LukeSmithxyz/LARBS/blob/master/static/progs.csv).
+[dependencies](https://github.com/chumutt/CUMFLARBS/blob/main/static/progs.csv).
 
-## Default Desktop Artwork
+## Credits
 
-Thomas Thiemeyer's *The Road to Samarkand* ([fb](https://www.facebook.com/t.thiemeyer/), [insta](https://www.instagram.com/tthiemeyer/), [shop](https://www.redbubble.com/de/people/TThiemeyer/shop))
+These dotfiles are a derivative of Luke Smith's
+[voidrice](https://github.com/LukeSmithxyz/voidrice) and keep his repo layout
+and many of his scripts; the X11/dwm side is essentially his setup. Thanks,
+Luke.
