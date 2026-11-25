@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+cd $HOME/.local/share/VCV/Rack2Pro/ &&
+./Rack

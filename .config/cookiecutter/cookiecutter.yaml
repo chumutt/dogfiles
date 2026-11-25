@@ -1,0 +1,9 @@
+default_context:
+    full_name: "Chu the Pup"
+    email: "chufilthymutt@gmail.com"
+    github_username: "chumutt"
+cookiecutters_dir: "/home/chu/.config/cookiecutter/cookiecutters/"
+replay_dir: "/home/chu/.config/cookiecutter/replays/"
+abbreviations:
+    gh: https://github.com/{0}.git
+    dbr: https://git.dogboner.xyz/{0}.git

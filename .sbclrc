@@ -1,0 +1,1 @@
+(push #P"~/.local/share/roswell/local-projects" ql:*local-project-directories*)
